@@ -1,0 +1,9 @@
+.header {
+  background-image: linear-gradient(to right, $color-1, $color-2);
+  padding: 1.5rem 0;
+
+  &__title {
+    font-weight: 100;
+    letter-spacing: 0.1rem;
+  }
+}

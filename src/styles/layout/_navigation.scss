@@ -1,0 +1,36 @@
+.navigation {
+  display: flex;
+  align-items: center;
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+  }
+
+  &__link {
+    &,
+    &:link,
+    &:visited {
+      color: $color-4-light;
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 100;
+      letter-spacing: 0.1rem;
+    }
+
+    &--active {
+      &,
+      &:link,
+      &:visited {
+        color: $color-3;
+      }
+    }
+  }
+}
