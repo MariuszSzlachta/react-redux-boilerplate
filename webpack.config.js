@@ -46,6 +46,7 @@ module.exports = (env) => {
     devServer: {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,
+      host: "0.0.0.0",
       publicPath: '/assets/'
     }
   };
