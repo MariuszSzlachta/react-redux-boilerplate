@@ -1,0 +1,9 @@
+.article {
+  color: $color-5;
+  text-align: justify;
+  margin-bottom: 4rem;
+
+  &--text-center {
+    text-align: center;
+  }
+}

@@ -1,0 +1,51 @@
+.buttons-box {
+  display: flex;
+  justify-content: center;
+
+  @include respond('small') {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.button {
+  border: none;
+  font-size: 1.8rem;
+  padding: 1rem 2rem;
+  border-radius: 10rem;
+  font-weight: 100;
+  letter-spacing: 0.1rem;
+  background-color: $color-1;
+  color:$color-4;
+  box-shadow: 0 1rem 2rem rgba($color-5, 0.2);
+  transition: all 0.1s;
+
+  &:active {
+    outline: none;
+    transform: translateY(0.2rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-5, 0.2);
+    color: $color-3;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:not(:last-child) {
+    margin-right: 1rem;
+
+    @include respond('small') {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &--small {
+    font-size: 1.3rem;
+    padding: 0.4rem 0.8rem;
+    margin-left: 1rem;
+  }
+}

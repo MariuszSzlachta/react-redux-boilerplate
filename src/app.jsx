@@ -1,4 +1,4 @@
-// React Library
+// React Library and Redux Provider
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -6,23 +6,17 @@ import { Provider } from 'react-redux';
 // Styles
 import './styles/main.scss';
 
-// Main Router
+// Router
 import AppRouter from './routers/AppRouter';
 
 // Store
 import configureStore from './store/configureStore';
-
-// Actions
-import { incrementCounter } from './actions/counter';
-
-
 const store = configureStore();
 
-
-const jsx =  (
+const app = (
   <Provider store={store}>
     <AppRouter />
   </Provider>
-)
+);
 
-ReactDOM.render( jsx, document.getElementById('app'));
+ReactDOM.render( app, document.getElementById('app'));

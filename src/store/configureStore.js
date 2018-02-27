@@ -1,11 +1,14 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
-// Reducers
 import counterReducer from '../reducers/counter';
+import listReducer from '../reducers/list';
 
 export default () => {
   const store = createStore(
-    counterReducer, 
+    combineReducers({
+      counter: counterReducer,
+      list: listReducer
+    }), 
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 

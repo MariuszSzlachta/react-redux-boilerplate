@@ -2,11 +2,6 @@
   max-width: 114rem;
   margin: 0 auto;
 
-  &--header {
-    display: flex;
-    justify-content: space-between;  
-  }
-
   @include respond('large') {
     padding: 0 1rem;
   }

@@ -1,3 +1,5 @@
+@charset 'utf-8';
+
 // Utils
 @import 'utils/variables';
 @import 'utils/functions';
@@ -12,12 +14,16 @@
 @import 'base/typography';
 
 // Layout
-@import 'layout/wrapper';
 @import 'layout/header';
 @import 'layout/navigation';
 
 // Components
+@import 'components/wrapper';
 @import 'components/jumbo';
+@import 'components/article';
+@import 'components/buttons';
+@import 'components/list';
 
 // Pages
+
 //Themes

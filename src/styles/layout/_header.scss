@@ -4,5 +4,15 @@
 
   &__title {
     letter-spacing: 0.1rem;
+
+    @include respond('small') {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 }
