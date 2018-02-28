@@ -46,7 +46,7 @@ module.exports = (env) => {
     plugins: [
       cssExtract,
       new HTMLPlugin({
-        title: 'My App',
+        title: 'React Boilerplate',
         filename: '../index.html',
         template: './src/templates/template.html',
         minify: {
