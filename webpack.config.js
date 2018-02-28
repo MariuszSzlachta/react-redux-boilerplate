@@ -50,12 +50,12 @@ module.exports = (env) => {
         filename: '../index.html',
         template: './src/templates/template.html',
         minify: {
-          removeAttributeQuotes: true,
-          collapseWhitespace: true,
-          html5: true,
-          minifyCSS: true,
-          removeComments: true,
-          removeEmptyAttributes: true,
+          removeAttributeQuotes: isProduction,
+          collapseWhitespace: isProduction,
+          html5: isProduction,
+          minifyCSS: isProduction,
+          removeComments: isProduction,
+          removeEmptyAttributes: isProduction,
         }
       })
     ],

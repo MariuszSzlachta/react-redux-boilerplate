@@ -42,12 +42,13 @@ Project includes 5 example routes (Home, About, Counter, List and 404 Not Found 
 
 ### Getting Started
 
-Clone the repo, run Webpack Dev Server, and start coding!
+Clone the repo, install dependencies, build application, run Webpack Dev Server, and start coding!
 
 ```bash
 $ git clone https://github.com/appalaszynski/react-boilerplate.git MyApp
 $ cd MyApp
 $ npm install                          
+$ npm build:dev
 $ npm run dev-server
 ```
 
