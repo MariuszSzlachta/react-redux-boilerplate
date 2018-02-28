@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HTMLPlugin = require('html-webpack-plugin')
 
 module.exports = (env) => {
   const isProduction = env === 'production';
@@ -20,8 +21,14 @@ module.exports = (env) => {
         test: /\.s|css$/,
         use: cssExtract.extract({
           use: [
-            { 
+            {
               loader: 'css-loader',
+              options: {
+                sourceMap: true
+              }
+            },
+            {
+              loader: 'postcss-loader',
               options: {
                 sourceMap: true
               }
@@ -37,7 +44,20 @@ module.exports = (env) => {
       }]
     },
     plugins: [
-      cssExtract
+      cssExtract,
+      new HTMLPlugin({
+        title: 'My App',
+        filename: '../index.html',
+        template: './src/templates/template.html',
+        minify: {
+          removeAttributeQuotes: true,
+          collapseWhitespace: true,
+          html5: true,
+          minifyCSS: true,
+          removeComments: true,
+          removeEmptyAttributes: true,
+        }
+      })
     ],
     resolve: {
       extensions: ['.js', '.jsx'],
