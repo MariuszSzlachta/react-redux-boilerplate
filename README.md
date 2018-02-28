@@ -28,6 +28,7 @@ Project includes 5 example routes (Home, About, Counter, List and 404 Not Found 
 │   ├── routers/                       # React routers
 │   ├── store/                         # Redux store configuration
 │   ├── styles/                        # Sass files using  the 7-1 architecture pattern
+│   ├── templates/                     # HTML Webpack Plugin templates
 │   ├── app.jsx                        # Main file
 ├── .babelrc                           # Babel configuration
 └── package.json                       # The list of project dependencies + NPM scripts
