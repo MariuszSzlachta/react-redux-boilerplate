@@ -4,7 +4,6 @@ const HTMLPlugin = require('html-webpack-plugin')
 
 module.exports = (env) => {
   const isProduction = env === 'production';
-  const cssExtract = new ExtractTextPlugin('styles.css');
 
   return {
     entry: './src/app.jsx',
@@ -20,32 +19,43 @@ module.exports = (env) => {
       }, {
         test: /\.s|css$/,
         exclude: /node_modules/,
-        use: cssExtract.extract({
+          use: ExtractTextPlugin.extract({
+            use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  sourceMap: true
+                }
+              },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  sourceMap: true
+                }
+              },
+              {
+                loader: 'sass-loader',
+                options: {
+                  sourceMap: true
+                }
+              }
+            ]
+          })
+       }, {
+          test: /\.(png|jpe?g|gif)$/,
           use: [
             {
-              loader: 'css-loader',
+              loader: 'file-loader',
               options: {
-                sourceMap: true
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: true
-              }
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true
+                name: '[name].[ext]',
+                publicPath: 'assets/'
               }
             }
           ]
-        })
       }]
     },
     plugins: [
-      cssExtract,
+      new ExtractTextPlugin('styles.css'),
       new HTMLPlugin({
         title: 'React Boilerplate',
         filename: '../index.html',
@@ -68,7 +78,13 @@ module.exports = (env) => {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,
       host: "0.0.0.0",
-      publicPath: '/assets/'
+      publicPath: '/assets/',
+      stats: {
+        all: false,
+        warnings: true,
+        errors: true,
+        errorDetails: true
+      }
     }
   };
 };
