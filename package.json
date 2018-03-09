@@ -5,8 +5,8 @@
   "description": "React-Router-Redux boilerplate",
   "scripts": {
     "dev-server": "webpack-dev-server --mode development",
-    "build:dev": "webpack --mode development",
-    "build:prod": "webpack -p --env production --mode production",
+    "build:dev": "rm -rf ./public && webpack --mode development",
+    "build:prod": "rm -rf ./public && webpack -p --env production --mode production",
     "heroku-postbuild": "npm run build:prod",
     "start": "node server/server.js"
   },
@@ -25,6 +25,7 @@
     "css-loader": "^0.28.10",
     "express": "^4.16.2",
     "extract-text-webpack-plugin": "^4.0.0-alpha.0",
+    "file-loader": "^1.1.11",
     "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.1.1",
