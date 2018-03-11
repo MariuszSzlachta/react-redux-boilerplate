@@ -9,6 +9,7 @@ module.exports = (env) => {
     entry: './src/app.jsx',
     output: {
       path: path.join(__dirname, 'public', 'assets'),
+      publicPath: 'assets',
       filename: 'bundle.js'
     },
     module: {
@@ -19,39 +20,34 @@ module.exports = (env) => {
       }, {
         test: /\.s|css$/,
         exclude: /node_modules/,
-          use: ExtractTextPlugin.extract({
-            use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  sourceMap: true
-                }
-              },
-              {
-                loader: 'postcss-loader',
-                options: {
-                  sourceMap: true
-                }
-              },
-              {
-                loader: 'sass-loader',
-                options: {
-                  sourceMap: true
-                }
-              }
-            ]
-          })
-       }, {
-          test: /\.(png|jpe?g|gif)$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: '[name].[ext]',
-                publicPath: 'assets/'
-              }
+        use: ExtractTextPlugin.extract({
+          use: [{
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              localIdentName: '[local]'
             }
-          ]
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+            }
+          }, {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }]
+        })
+      }, {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+          }
+        }]
       }]
     },
     plugins: [
@@ -67,6 +63,12 @@ module.exports = (env) => {
           minifyCSS: isProduction,
           removeComments: isProduction,
           removeEmptyAttributes: isProduction,
+          removeRedundantAttributes: isProduction,
+          useShortDoctype: isProduction,
+          removeStyleLinkTypeAttributes: isProduction,
+          keepClosingSlash: isProduction,
+          minifyJS: isProduction,
+          minifyURLs: isProduction
         }
       })
     ],
@@ -78,7 +80,6 @@ module.exports = (env) => {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,
       host: "0.0.0.0",
-      publicPath: '/assets/',
       stats: {
         all: false,
         warnings: true,
