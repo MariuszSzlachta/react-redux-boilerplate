@@ -1,6 +1,8 @@
 const path = require('path');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const HTMLPlugin = require('html-webpack-plugin');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HTMLPlugin = require('html-webpack-plugin')
 
 module.exports = (env) => {
   const isProduction = env === 'production';
@@ -8,78 +10,121 @@ module.exports = (env) => {
   return {
     entry: './src/app.jsx',
     output: {
-      path: path.join(__dirname, 'public', 'assets'),
-      publicPath: 'assets',
-      filename: 'bundle.js'
+      path: path.join(__dirname, 'public'),
+      filename: 'assets/scripts/bundle.js'
     },
     module: {
-      rules: [{
-        loader: 'babel-loader',
-        test: /\.jsx|js$/,
-        exclude: /node_modules/
-      }, {
-        test: /\.s|css$/,
-        exclude: /node_modules/,
-        use: ExtractTextPlugin.extract({
-          use: [{
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              modules: true,
-              localIdentName: '[local]'
+      rules: [
+        // JavaScript and JSX files loader
+        {
+          test: /\.jsx|js$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader'
+        },
+
+        // Images loader
+        {
+          test: /\.(png|jpe?g|gif)$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                outputPath: 'assets/images/',
+                name: '[name].[ext]'
+              }
+            },
+            {
+              loader: 'img-loader',
+              options: {
+                enabled: isProduction
+              }
             }
-          }, {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-            }
-          }, {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
-          }]
-        })
-      }, {
-        test: /\.(png|jpe?g|gif)$/,
-        use: [{
-          loader: 'file-loader',
+          ]
+        },
+
+        // SVG loader
+        {
+          test: /\.svg$/,
+          loader: 'svg-sprite-loader',
           options: {
-            name: '[name].[ext]',
+            extract: true,
+            spriteFilename: 'assets/images/sprite.svg'
           }
-        }]
-      }]
-    },
-    plugins: [
-      new ExtractTextPlugin('styles.css'),
-      new HTMLPlugin({
-        title: 'React Boilerplate',
-        filename: '../index.html',
-        template: './src/templates/template.html',
-        minify: {
-          removeAttributeQuotes: isProduction,
-          collapseWhitespace: isProduction,
-          html5: isProduction,
-          minifyCSS: isProduction,
-          removeComments: isProduction,
-          removeEmptyAttributes: isProduction,
-          removeRedundantAttributes: isProduction,
-          useShortDoctype: isProduction,
-          removeStyleLinkTypeAttributes: isProduction,
-          keepClosingSlash: isProduction,
-          minifyJS: isProduction,
-          minifyURLs: isProduction
+        },
+
+        // Styles loader
+        {
+          test: /\.s|css$/,
+          exclude: [/node_modules/, /\.svg$/],
+          use: ExtractTextPlugin.extract({
+            publicPath: '../../',
+            use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  sourceMap: true,
+                  modules: true,
+                  localIdentName: '[local]'
+                }
+              },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  sourceMap: true
+                }
+              },
+              {
+                loader: 'sass-loader',
+                options: {
+                  sourceMap: true
+                }
+              }
+            ]
+          })
         }
-      })
+      ]
+    },
+
+    // Plugins
+    plugins: [
+      new HTMLPlugin({
+        filename: 'index.html',
+        title: 'asd',
+        template: './src/templates/index.html',
+        minify: {
+          html5: isProduction,
+          collapseWhitespace: isProduction
+        }
+      }),
+      new SpriteLoaderPlugin({
+        plainSprite: true
+      }),
+      new ExtractTextPlugin('assets/styles/styles.css'),
+      new BrowserSyncPlugin({
+        host: 'localhost',
+        port: 3000,
+        proxy: 'http://localhost:8080/',
+        notify: false,
+        open: false
+      },
+        {
+          reload: false
+        })
     ],
+
+    // Resolve extensions and modules paths
     resolve: {
       extensions: ['.js', '.jsx'],
+      modules: ['./src', './node_modules']
     },
+
+    // Source maps
     devtool: isProduction ? 'source-map' : 'inline-source-map',
+
+    // Webpack Dev Server configuration
     devServer: {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,
-      host: "0.0.0.0",
       stats: {
         all: false,
         warnings: true,
@@ -87,5 +132,5 @@ module.exports = (env) => {
         errorDetails: true
       }
     }
-  };
-};
+  }
+}
