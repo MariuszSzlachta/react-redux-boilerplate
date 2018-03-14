@@ -89,10 +89,9 @@ module.exports = (env) => {
     plugins: [
       new HTMLPlugin({
         filename: 'index.html',
-        title: 'asd',
+        title: 'React Redux Boilerplate',
         template: './src/templates/index.html',
         minify: {
-          html5: isProduction,
           collapseWhitespace: isProduction
         }
       }),
