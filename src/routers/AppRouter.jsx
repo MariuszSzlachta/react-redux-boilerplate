@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
 
-import Header from '../components/Header';
-import HomePage from '../components/HomePage';
-import CounterPage from '../components/CounterPage';
-import ListPage from '../components/ListPage';
-import AboutPage from '../components/AboutPage';
-import NotFound from '../components/NotFound';
+import Header from 'components/Header';
+import HomePage from 'components/HomePage/HomePage';
+import CounterPage from 'components/CounterPage';
+import ListPage from 'components/ListPage';
+import AboutPage from 'components/AboutPage';
+import NotFound from 'components/NotFound';
 
 const AppRouter = () => (
   <BrowserRouter>

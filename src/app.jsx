@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 // Styles
-import './styles/main.scss';
+import 'styles/main.scss';
 
 // Router
-import AppRouter from './routers/AppRouter';
+import AppRouter from 'routers/AppRouter';
 
 // Store
-import configureStore from './store/configureStore';
+import configureStore from 'store/configureStore';
 const store = configureStore();
 
 const app = (
