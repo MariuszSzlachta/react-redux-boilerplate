@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addItem, removeItem } from '../actions/list';
+import { addItem, removeItem } from 'Actions';
 
 class ListPage extends React.Component {
   constructor(props) {
@@ -11,30 +11,30 @@ class ListPage extends React.Component {
     this.removeItem = this.removeItem.bind(this);
 
     this.state = {
-      value: ""
-    }
+      value: '',
+    };
   }
 
   setValue(value) {
     this.setState(() => ({
-      value
+      value,
     }));
   }
 
   addItem(e) {
     e.preventDefault();
-    
-    e.target.elements[0].value = "";
+
+    e.target.elements[0].value = '';
 
     this.props.dispatch(addItem(this.state.value));
     this.setState(() => ({
-      value: ""
+      value: '',
     }));
-  };
+  }
 
   removeItem(id) {
     this.props.dispatch(removeItem(id));
-  };
+  }
 
   render() {
     return (
@@ -43,7 +43,7 @@ class ListPage extends React.Component {
           <h1 className="page-title">List</h1>
         </div>
         <div className="article">
-          <h2 className="article-title">{this.props.list.length === 0 ? "Add Item to start" : "Here are Your items:"}</h2>
+          <h2 className="article-title">{this.props.list.length === 0 ? 'Add Item to start' : 'Here are Your items:'}</h2>
         </div>
         <ul className="list">
           {this.props.list.map((item, index) => (
@@ -66,7 +66,7 @@ class ListPage extends React.Component {
           onSubmit={this.addItem}
         >
           <input
-            onChange={(e) => this.setValue(e.target.value.trim())}
+            onChange={e => this.setValue(e.target.value.trim())}
             type="text"
             id="item"
             className="list__input"
@@ -79,12 +79,12 @@ class ListPage extends React.Component {
           </button>
         </form>
       </div>
-    )
+    );
   }
-} 
+}
 
-const mapStateToProps = (state) => ({
-  list: state.list
-})
+const mapStateToProps = state => ({
+  list: state.list,
+});
 
 export default connect(mapStateToProps)(ListPage);

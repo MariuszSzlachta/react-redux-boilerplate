@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { incrementCounter, decrementCounter, resetCounter } from '../actions/counter';
+import { incrementCounter, decrementCounter, resetCounter } from 'Actions';
 
-const CounterPage = ({count, dispatch}) => (
+const CounterPage = ({ count, dispatch }) => (
   <div>
     <div className="jumbo">
       <h1 className="page-title">Counter</h1>
@@ -27,14 +27,14 @@ const CounterPage = ({count, dispatch}) => (
           onClick={() => dispatch(resetCounter())}
         >
           Reset
-        </button>      
+        </button>
       </div>
     </div>
   </div>
 );
 
-const mapStateToProps = (state) => ({
-  count: state.counter.count
-})
+const mapStateToProps = state => ({
+  count: state.counter.count,
+});
 
 export default connect(mapStateToProps)(CounterPage);

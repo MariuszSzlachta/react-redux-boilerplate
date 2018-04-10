@@ -11,7 +11,7 @@ module.exports = (env) => {
     entry: './src/app.jsx',
     output: {
       path: path.join(__dirname, 'public'),
-      filename: 'assets/scripts/bundle.js'
+      filename: 'assets/scripts/bundle.js',
     },
     module: {
       rules: [
@@ -19,7 +19,7 @@ module.exports = (env) => {
         {
           test: /\.jsx|js$/,
           exclude: /node_modules/,
-          loader: 'babel-loader'
+          loader: 'babel-loader',
         },
 
         // Images loader
@@ -30,16 +30,16 @@ module.exports = (env) => {
               loader: 'file-loader',
               options: {
                 outputPath: 'assets/images/',
-                name: '[name].[ext]'
-              }
+                name: '[name].[ext]',
+              },
             },
             {
               loader: 'img-loader',
               options: {
-                enabled: isProduction
-              }
-            }
-          ]
+                enabled: isProduction,
+              },
+            },
+          ],
         },
 
         // SVG loader
@@ -48,8 +48,8 @@ module.exports = (env) => {
           loader: 'svg-sprite-loader',
           options: {
             extract: true,
-            spriteFilename: 'assets/images/sprite.svg'
-          }
+            spriteFilename: 'assets/images/sprite.svg',
+          },
         },
 
         // Styles loader
@@ -64,25 +64,25 @@ module.exports = (env) => {
                 options: {
                   sourceMap: true,
                   modules: true,
-                  localIdentName: '[local]'
-                }
+                  localIdentName: '[local]',
+                },
               },
               {
                 loader: 'postcss-loader',
                 options: {
-                  sourceMap: true
-                }
+                  sourceMap: true,
+                },
               },
               {
                 loader: 'sass-loader',
                 options: {
-                  sourceMap: true
-                }
-              }
-            ]
-          })
-        }
-      ]
+                  sourceMap: true,
+                },
+              },
+            ],
+          }),
+        },
+      ],
     },
 
     // Plugins
@@ -92,29 +92,38 @@ module.exports = (env) => {
         title: 'React Redux Boilerplate',
         template: './src/templates/index.html',
         minify: {
-          collapseWhitespace: isProduction
-        }
+          collapseWhitespace: isProduction,
+        },
       }),
       new SpriteLoaderPlugin({
-        plainSprite: true
+        plainSprite: true,
       }),
       new ExtractTextPlugin('assets/styles/styles.css'),
-      new BrowserSyncPlugin({
-        host: 'localhost',
-        port: 3000,
-        proxy: 'http://localhost:8080/',
-        notify: false,
-        open: false
-      },
+      new BrowserSyncPlugin(
         {
-          reload: false
-        })
+          host: 'localhost',
+          port: 3000,
+          proxy: 'http://localhost:8080/',
+          notify: false,
+          open: false,
+        },
+        {
+          reload: false,
+        },
+      ),
     ],
 
     // Resolve extensions and modules paths
     resolve: {
       extensions: ['.js', '.jsx'],
-      modules: ['./src', './node_modules']
+      modules: ['./src', './node_modules'],
+      alias: {
+        Components: path.join(__dirname, 'src', 'components'),
+        Containers: path.join(__dirname, 'src', 'containers'),
+        Reducers: path.join(__dirname, 'src', 'reducers'),
+        Routers: path.join(__dirname, 'src', 'routers'),
+        Actions: path.join(__dirname, 'src', 'actions'),
+      },
     },
 
     // Source maps
@@ -128,8 +137,9 @@ module.exports = (env) => {
         all: false,
         warnings: true,
         errors: true,
-        errorDetails: true
-      }
-    }
-  }
-}
+        errorDetails: true,
+      },
+    },
+  };
+};
+

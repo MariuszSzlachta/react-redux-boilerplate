@@ -7,10 +7,11 @@ import { Provider } from 'react-redux';
 import 'styles/main.scss';
 
 // Router
-import AppRouter from 'routers/AppRouter';
+import AppRouter from 'Routers';
 
 // Store
 import configureStore from 'store/configureStore';
+
 const store = configureStore();
 
 const app = (
@@ -19,4 +20,4 @@ const app = (
   </Provider>
 );
 
-ReactDOM.render( app, document.getElementById('app'));
+ReactDOM.render(app, document.getElementById('app'));

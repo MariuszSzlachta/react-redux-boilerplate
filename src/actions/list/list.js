@@ -1,16 +1,16 @@
 import uuid from 'uuid';
 
-const addItem = (value) => ({
+const addItem = value => ({
   type: 'ADD_ITEM',
   item: {
     id: uuid(),
-    value
-  }
+    value,
+  },
 });
 
 const removeItem = (id = 0) => ({
   type: 'REMOVE_ITEM',
-  id
+  id,
 });
 
 export { addItem, removeItem };
