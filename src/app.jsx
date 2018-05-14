@@ -1,23 +1,24 @@
-// React Library and Redux Provider
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { Aux } from 'Components';
+import { Counter } from 'Containers';
+
+// React Router
+import { BrowserRouter } from 'react-router-dom';
+
+// Redux
 import { Provider } from 'react-redux';
+import store from 'store/configureStore';
 
-// Styles
-import 'styles/main.scss';
-
-// Router
-import AppRouter from 'Routers';
-
-// Store
-import configureStore from 'store/configureStore';
-
-const store = configureStore();
-
-const app = (
+const App = () => (
   <Provider store={store}>
-    <AppRouter />
+    <BrowserRouter>
+      <Aux>
+        <h1>React-Redux Boilerplate</h1>
+        <Counter />
+      </Aux>
+    </BrowserRouter>
   </Provider>
 );
 
-ReactDOM.render(app, document.getElementById('app'));
+export default App;
+

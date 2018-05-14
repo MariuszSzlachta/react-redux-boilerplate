@@ -14,9 +14,6 @@
     <a href="https://github.com/appalaszynski/react-redux-boilerplate/network/members">
       <img src="https://img.shields.io/github/forks/appalaszynski/react-redux-boilerplate.svg" /> 
     </a>
-    <a href="https://github.com/appalaszynski/react-redux-boilerplate/blob/master/package.json">
-    <img src="https://img.shields.io/github/package-json/v/appalaszynski/react-redux-boilerplate.svg" />
-      </a>
     <a href="https://github.com/appalaszynski/react-redux-boilerplate/commits/master">
       <img src="https://img.shields.io/github/last-commit/appalaszynski/react-redux-boilerplate.svg" />
     </a>
@@ -25,7 +22,7 @@
   <br>
 </div>
 
-This template is using, among others, [React Router](https://github.com/ReactTraining/react-router), [Webpack](https://github.com/webpack), [Sass](https://github.com/sass/sass), [Jest](https://facebook.github.io/jest/), [Enzyme](https://github.com/airbnb/enzyme) and [Browsersync](https://browsersync.io). You can find full dependences list in [package.json](https://github.com/appalaszynski/react-redux-boilerplate/blob/master/package.json) file. Project is also ready for [Heroku](https://www.heroku.com/) deploy.
+This template is using, among others, [Autoprefixer](https://github.com/postcss/autoprefixer), [Jest](https://github.com/facebook/jest) with [Enzyme](https://github.com/airbnb/enzyme), [ESLint](https://github.com/eslint/eslint) with [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb) and [BrowserSync](https://github.com/BrowserSync/browser-sync). You can find full dependences list in [package.json](https://github.com/appalaszynski/react-redux-boilerplate/blob/master/package.json) file. Project is also ready for [Heroku](https://www.heroku.com/) deploy.
 
 ---
 
@@ -43,25 +40,28 @@ This template is using, among others, [React Router](https://github.com/ReactTra
 ```bash
 ├── node_modules/                      # 3rd-party libraries and utilities
 ├── server/                        
-│   ├── server.js/                     # Express server configuration
+│   ├── server.js                      # Express server configuration
 ├── public/                            # Compiled output
 ├── src/                               # Source files
-│   ├── actions/                       # Redux actions
+│   ├── assets/                        # Images, icons, sounds etc.
+│   ├── axios/                         # Axios instances
 │   ├── components/                    # React components
-│   ├── images/                        # Images and icons
-│   ├── reducers/                      # Redux reducers
-│   ├── routers/                       # React routers
-│   ├── store/                         # Redux store configuration
-│   ├── styles/                        # Sass files using  the 7-1 architecture pattern
+│   ├── containers/                    # React containers
+│   ├── store/                         # Redux store files
+│   │   ├── actions/                   # Redux actions
+│   │   ├── reducers/                  # Redux reducers
+│   │   ├── configureStore.jsx         # Redux store configuration file
+│   ├── styles/                        # Sass files using the 7-1 architecture pattern
 │   ├── templates/                     # HTML Webpack Plugin templates
-│   ├── tests/                         # Test files
-│   │   ├── enzyme.config.js           # Enzyme configuration
-│   ├── app.jsx                        # Main file
+│   ├── App.jsx                        # Root component
+│   ├── index.jsx                      # Main/Webpack entry file
 ├── .babelrc                           # Babel configuration
 └── .browserslistrc                    # Browserslist configuration
+└── .eslintrc.json                     # ESLint configuration
 └── jest.config.json                   # Jest configuration
 └── package.json                       # List of project dependencies + NPM scripts
 └── postcss.config.js                  # Post CSS configuration
+└── tests.config.js                    # Enzyme configuration
 └── webpack.config.js                  # Webpack configuration
 ```
 
@@ -79,7 +79,7 @@ This template is using, among others, [React Router](https://github.com/ReactTra
 Clone the repo and install dependencies.
 
 ```bash
-$ git clone https://github.com/appalaszynski/react-boilerplate.git MyApp
+$ git clone https://github.com/appalaszynski/react-redux-boilerplate.git MyApp
 $ cd MyApp
 $ npm install                          
 ```

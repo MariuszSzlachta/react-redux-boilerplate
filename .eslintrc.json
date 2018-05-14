@@ -11,13 +11,13 @@
       }
     }
   },
-
-  "parser": "babel-eslint",
   
+  "parser": "babel-eslint",
+
   "plugins": [
     "react"
   ],
-  
+
   "extends": [
     "airbnb"
   ]

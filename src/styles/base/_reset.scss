@@ -10,10 +10,6 @@
 html {
   font-size: px-to-percent(10px); /* 1 */
   box-sizing: border-box;
-
-  @include respond('small') {
-    font-size: px-to-percent(9px);    
-  }
 }
 
 *,

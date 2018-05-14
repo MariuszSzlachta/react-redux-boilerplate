@@ -3,15 +3,17 @@
  *
  * 0px - 600px:       Small
  * 600px - 900px:     Medium
- * 900px - 1140px:    Large
- * 1800px and more:   Huge
+ * 900px - 1100px:    Large
+ * 1800px - 2699px:   Huge
+ * 2800px - more:     Extra
  */
 
 $breakpoints: (
   'small': (max-width: px-to-em(600px)),
   'medium': (max-width: px-to-em(900px)),
-  'large': (max-width: px-to-em(1140px)),
+  'large': (max-width: px-to-em(1100px)),
   'huge': (min-width: px-to-em(1800px)),
+  'extra': (min-width: px-to-em(2700px)),
 );
 
 @mixin respond($breakpoint) {
