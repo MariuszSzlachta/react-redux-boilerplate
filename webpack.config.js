@@ -9,7 +9,7 @@ module.exports = (env) => {
   const isProduction = env === 'production';
 
   return {
-    entry: './src/index.jsx',
+    entry: ['babel-polyfill', './src/index.jsx'],
     output: {
       path: path.join(__dirname, 'public'),
       filename: 'assets/scripts/bundle.js',
