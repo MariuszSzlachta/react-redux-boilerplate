@@ -17,3 +17,9 @@ if (module.hot) {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+(function () {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js');
+  }
+}());

@@ -1,9 +1,11 @@
 const path = require('path');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const HTMLPlugin = require('html-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
+const fs = require('fs');
 
 module.exports = (env) => {
   const isProduction = env === 'production';
@@ -12,8 +14,8 @@ module.exports = (env) => {
     entry: ['babel-polyfill', './src/index.jsx'],
     output: {
       path: path.join(__dirname, 'public'),
-      filename: 'assets/scripts/bundle.js',
-      chunkFilename: 'chunk-[name]-[chunkhash].js',
+      filename: 'assets/scripts/bundle-[hash].js',
+      chunkFilename: 'assets/scripts/chunk-[name]-[chunkhash:5].js',
     },
     module: {
       rules: [
@@ -113,7 +115,7 @@ module.exports = (env) => {
         plainSprite: true,
       }),
       new MiniCssExtractPlugin({
-        filename: 'assets/styles/styles.css',
+        filename: 'assets/styles/styles-[hash].css',
         publicPath: '../../',
       }),
       new BrowserSyncPlugin(
@@ -128,6 +130,17 @@ module.exports = (env) => {
           reload: false,
         },
       ),
+      new SWPrecacheWebpackPlugin({
+        dontCacheBustUrlsMatching: /\.\w{8}\./,
+        filename: 'service-worker.js',
+        minify: true,
+        // For unknown URLs, fallback to the index page
+        navigateFallback: '/index.html',
+        // Ignores URLs starting from /__ (useful for Firebase):
+        navigateFallbackWhitelist: [/^(?!\/__).*/],
+        // Don't precache sourcemaps (they're large) and build asset manifest:
+        staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+      }),
     ],
 
     // Resolve extensions and modules paths
