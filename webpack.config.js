@@ -13,6 +13,7 @@ module.exports = (env) => {
     output: {
       path: path.join(__dirname, 'public'),
       filename: 'assets/scripts/bundle.js',
+      chunkFilename: 'chunk-[name]-[chunkhash].js',
     },
     module: {
       rules: [
