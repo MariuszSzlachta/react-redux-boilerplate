@@ -5,7 +5,6 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
-const fs = require('fs');
 
 module.exports = (env) => {
   const isProduction = env === 'production';
@@ -56,10 +55,38 @@ module.exports = (env) => {
           },
         },
 
-        // Styles loader
+        // Styles from 'src/styles' directory have disables CSS Modules (they are global)
         {
           test: /\.s|css$/,
-          exclude: [/node_modules/, /\.svg$/],
+          include: /src\/styles/,
+          exclude: /node_modules/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true,
+              },
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+              },
+            },
+          ],
+        },
+
+        // Every other stylesheet have CSS Modules
+        {
+          test: /\.s|css$/,
+          exclude: [/src\/styles/, /node_modules/, /\.svg$/],
           use: [
             MiniCssExtractPlugin.loader,
             {
