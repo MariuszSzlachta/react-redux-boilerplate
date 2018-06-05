@@ -2,6 +2,7 @@ const path = require('path');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const HTMLPlugin = require('html-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
@@ -133,10 +134,32 @@ module.exports = (env) => {
       new HTMLPlugin({
         filename: 'index.html',
         title: 'React-Redux Boilerplate',
+        description: 'Starter kit for creating apps using React and Redux',
+        themeColor: '#01579b',
+        appTitle: 'RRB',
         template: './src/templates/index.html',
         minify: {
           collapseWhitespace: isProduction,
         },
+      }),
+      new WebpackPwaManifest({
+        filename: 'manifest.json',
+        name: 'React-Redux Boilerplate',
+        short_name: 'RRB',
+        orientation: 'portrait',
+        display: 'standalone',
+        start_url: '/',
+        description: 'Starter kit for creating apps using React and Redux',
+        background_color: '#FFFFFF',
+        theme_color: '#01579b',
+        inject: true,
+        // icons: [
+        //   {
+        //     src: path.resolve('src/images/icon.png'),
+        //     sizes: [96, 128, 192, 256, 384, 512],
+        //     destination: path.join('assets', 'icons'),
+        //   },
+        // ],
       }),
       new SpriteLoaderPlugin({
         plainSprite: true,

@@ -2,10 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title><%= htmlWebpackPlugin.options.title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, shrink-to-fit=no, user-scalable=no">
+  
+  <title><%= htmlWebpackPlugin.options.title || 'Webpack App'%></title>
+
+  <meta name="description" content="<%= htmlWebpackPlugin.options.description || 'App description' %>">
+
   <noscript>You have to enable Javascript if you want to use this app.</noscript>
+
+  <% if (htmlWebpackPlugin.options.themeColor) { %>
+    <meta name="theme-color" content="<%= htmlWebpackPlugin.options.themeColor %>">
+  <% } %>
+
+  <% if (htmlWebpackPlugin.options.appTitle) { %>
+    <meta name="application-name" content="<%= htmlWebpackPlugin.options.appTitle %>">
+  <% } %>
+    
+  <% if (htmlWebpackPlugin.options.appTitle) { %>
+    <meta name="apple-mobile-web-app-title" content="<%= htmlWebpackPlugin.options.appTitle %>">
+  <% } %>
+  
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="Default">
 </head>
 <body>
   <div id="app"></div>
