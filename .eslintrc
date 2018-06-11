@@ -1,0 +1,40 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+
+  "parser": "babel-eslint",
+
+  "settings": {
+    "import/core-modules": [ "react-router-dom" ],
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ],
+        "paths": [
+          "./src"
+        ]
+      }
+    }
+  },
+
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "generators": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+
+  "plugins": [ "react", "jsx-a11y", "import" ],
+
+  "extends": "airbnb"
+}

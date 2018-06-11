@@ -1,13 +1,16 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, shrink-to-fit=no, user-scalable=no">
-  
-  <title><%= htmlWebpackPlugin.options.title || 'Webpack App'%></title>
 
-  <meta name="description" content="<%= htmlWebpackPlugin.options.description || 'App description' %>">
+  <title>
+    <%= htmlWebpackPlugin.options.title || 'Application name'%>
+  </title>
+
+  <meta name="description" content="<%= htmlWebpackPlugin.options.description || 'Application description' %>">
 
   <noscript>You have to enable Javascript if you want to use this app.</noscript>
 
@@ -15,18 +18,34 @@
     <meta name="theme-color" content="<%= htmlWebpackPlugin.options.themeColor %>">
   <% } %>
 
-  <% if (htmlWebpackPlugin.options.appTitle) { %>
-    <meta name="application-name" content="<%= htmlWebpackPlugin.options.appTitle %>">
+  <% if (htmlWebpackPlugin.options.applicationName) { %>
+    <meta name="application-name" content="<%= htmlWebpackPlugin.options.applicationName %>">
+    <meta name="apple-mobile-web-app-title" content="<%= htmlWebpackPlugin.options.applicationName %>">
   <% } %>
-    
+
   <% if (htmlWebpackPlugin.options.appTitle) { %>
     <meta name="apple-mobile-web-app-title" content="<%= htmlWebpackPlugin.options.appTitle %>">
   <% } %>
-  
+
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="Default">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/ios/icon-180.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="/assets/icons/ios/icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/ios/icon-152.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/ios/icon-144.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/ios/icon-120.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/ios/icon-114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/ios/icon-72.png">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/ios/icon-57.png">
+
+  <link rel="shortcut icon" href="<%= require('assets/favicon.png') %>>">
+
+  <link rel="manifest" href="/manifest.json">
 </head>
+
 <body>
   <div id="app"></div>
 </body>
+
 </html>

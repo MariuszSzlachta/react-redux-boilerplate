@@ -1,15 +1,18 @@
 {
   "setupFiles": [
-    "<rootDir>/tests.config.js"
+    "<rootDir>/jest/setup.js"
   ],
-  "snapshotSerializers": [
-    "enzyme-to-json/serializer"
-  ],
-  "moduleNameMapper": {
-    "\\.(css|scss|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "identity-obj-proxy"
-  },
   "moduleDirectories": [
     "node_modules",
     "<rootDir>/src"
+  ],
+  "testEnvironment": "node",
+  "transform": {
+    "^.+\\.jsx?$": "babel-jest",
+    "^.+\\.css$": "<rootDir>/jest/cssTransform.js",
+    "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/jest/fileTransform.js"
+  },
+  "snapshotSerializers": [
+    "enzyme-to-json/serializer"
   ]
 }

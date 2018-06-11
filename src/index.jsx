@@ -1,25 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 // Root component
-import App from 'App';
-
+import App from './App';
+// Service Worker
+import registerServiceWorker from './registerServiceWorker';
 // Global CSS styles
 import './styles/main.scss';
 
-// Hot Module Replacement
-if (module.hot) {
-  module.hot.accept('./App', () => {
-    // next-line
-    const NextApp = require('./App').default; // eslint-disable-line
-    ReactDOM.render(<NextApp />, document.getElementById('app'));
-  });
-}
-
 ReactDOM.render(<App />, document.getElementById('app'));
-
-(function () {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js');
-  }
-}());
+registerServiceWorker();

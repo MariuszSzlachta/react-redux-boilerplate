@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
-import { counterReducer } from 'Reducers';
 import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import { counterReducer } from './reducers';
 
 const composeEnhancers = (
   /* eslint-disable no-underscore-dangle */
