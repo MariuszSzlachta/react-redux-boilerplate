@@ -32,7 +32,7 @@ module.exports = (env, argv) => {
       // resolves a sequence of path segments into an absolute path. `__dirname` is `Node.js`
       // variable which store current absolute path.
       path: path.resolve(__dirname, 'dist'),
-      // `publicPath` specifies the base path for all the assets within application. Assingment
+      // `publicPath` specifies the base path for all the assets within application. Assignment
       // of `/` will generate e.g. `<script src="/assets/bundle.js">` instead of
       // `<script src="assets/bundle.js">`.
       publicPath: '/',
@@ -58,7 +58,7 @@ module.exports = (env, argv) => {
                 name: 'assets/media/[name].[hash:8].[ext]',
               },
             },
-            // `svg-sprite-loader` creates SVG sprite (one SVG containig all SVG icons) to avoid
+            // `svg-sprite-loader` creates SVG sprite (one SVG containing all SVG icons) to avoid
             // requests. This won't work without `SpriteLoaderPlugin` in `plugins`.
             {
               test: /\.svg$/,
@@ -88,7 +88,7 @@ module.exports = (env, argv) => {
             // Process CSS files with listed loaders. `style-loader` turns CSS into JS modules
             // and adds them to the HTML document by injecting <style> tags. `css-loader` knows
             // how to deal with CSS files, resolves paths in CSS and adds assets as dependencies.
-            // `postcss-loader` applies autoprefixer to CSS. In production, we use a plugin to
+            // `postcss-loader` applies `Autoprefixer` to CSS. In production, we use a plugin to
             // extract that CSS to a file, but in development `style-loader` enables hot editing
             // of CSS.
             {
@@ -250,13 +250,13 @@ module.exports = (env, argv) => {
       },
     },
     // Enable optimization of our output files: bundle.js and vendors.js.
-    // Webpack will remove packages listed in vendors entrypoint from bundle.js
+    // Webpack will remove packages listed in vendors entry point from bundle.js
     // and place them only in vendors.js.
     optimization: {
       splitChunks: {
         cacheGroups: {
           commons: {
-            // The name of the split chunk (same as entrypoint).
+            // The name of the split chunk (same as entry point).
             name: 'vendors',
             chunks: 'initial',
             // Select only modules from /node_modules/ directory.

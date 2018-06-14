@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { incrementCounter, decrementCounter, resetCounter } from 'store/actions/counter';
-import icon from 'assets/checked.svg';
+import icon from 'assets/images/checked.svg';
 
-export const Counter = ({
+const Counter = ({
   counter, incrementCounter, decrementCounter, resetCounter,
 }) => (
   <div>

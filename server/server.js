@@ -6,11 +6,11 @@ const app = express();
 // Set up server port.
 const port = process.env.PORT || 3000;
 
+// Serve static files from dist folder.
 const publicPath = path.resolve(__dirname, '..', 'dist');
-
 app.use(express.static(publicPath));
 
-// Respond with index.html when a GET request is made.
+// Always respond with index.html.
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
