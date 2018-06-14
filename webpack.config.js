@@ -59,7 +59,7 @@ module.exports = (env, argv) => {
               },
             },
             // `svg-sprite-loader` creates SVG sprite (one SVG containig all SVG icons) to avoid
-            // requests. This won't work without `MiniCssExtractPlugin` in `plugins`.
+            // requests. This won't work without `SpriteLoaderPlugin` in `plugins`.
             {
               test: /\.svg$/,
               loader: 'svg-sprite-loader',
@@ -169,7 +169,7 @@ module.exports = (env, argv) => {
           minifyURLs: isProduction,
         },
       }),
-      // This won't work without `svg-sprite-loader` in `loaders`.
+      // This won't work without `MiniCssExtractPlugin.loader` in `loaders`.
       new MiniCssExtractPlugin({
         filename: 'assets/css/styles.[contenthash:8].css',
       }),
@@ -189,7 +189,7 @@ module.exports = (env, argv) => {
           },
         ],
       }),
-      // This won't work without `MiniCssExtractPlugin.loader` in `loaders`.
+      // This won't work without `svg-sprite-loader` in `loaders`.
       new SpriteLoaderPlugin({
         plainSprite: true,
       }),
