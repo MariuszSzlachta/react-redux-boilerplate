@@ -3,16 +3,18 @@ import { connect } from 'react-redux';
 import { incrementCounter, decrementCounter, resetCounter } from 'store/actions/counter';
 import icon from 'assets/checked.svg';
 
-export const Counter = props => (
+export const Counter = ({
+  counter, incrementCounter, decrementCounter, resetCounter,
+}) => (
   <div>
-    <h2>Counter: {props.counter.counter}</h2>
-    <h2>Last action: {props.counter.lastAction}</h2>
-    <button onClick={props.incrementCounter}>Increment</button>
-    <button onClick={props.decrementCounter}>Decrement</button>
-    <button onClick={props.resetCounter}>Reset</button>
-    <svg viewBox={icon.viewBox}>
+    <h3>Counter: {counter.counter}</h3>
+    <h3>Last action: {counter.lastAction ? counter.lastAction : 'None'}</h3>
+    <button onClick={incrementCounter}>Increment</button>
+    <button onClick={decrementCounter}>Decrement</button>
+    <button onClick={resetCounter}>Reset</button>
+    <svg viewBox={icon.viewBox} style={{ width: '2rem' }}>
       <use xlinkHref={icon} />
-    </svg>`
+    </svg>
   </div>
 );
 

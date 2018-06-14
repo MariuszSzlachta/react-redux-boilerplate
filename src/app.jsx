@@ -1,9 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-import { Aux, DynamicImport } from 'components';
-import store from './store/configureStore';
-
+import Aux from 'components/Aux/Aux';
+import DynamicImport from 'components/DynamicImport/DynamicImport';
+import store from 'store/configureStore';
 
 const App = () => {
   const Counter = props => (
@@ -18,10 +18,10 @@ const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <Aux>
-          <h1>React-Redux Boilerplate!</h1>
-          <Link href="/xD" to="/xD">xD</Link>
+          <h1>React-Redux Boilerplate</h1>
+          <Link href="/counter" to="/counter">Counter</Link>
           <Switch>
-            <Route path="/xD" exact component={() => Counter({ foo: 2 })} />
+            <Route path="/counter" exact component={() => Counter()} />
           </Switch>
         </Aux>
       </BrowserRouter>

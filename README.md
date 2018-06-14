@@ -19,7 +19,16 @@
   <br>
 </div>
 
-This template is using, among others, [React-Router](https://github.com/ReactTraining/react-router), [Jest](https://github.com/facebook/jest) with [Enzyme](https://github.com/airbnb/enzyme), [ESLint](https://github.com/eslint/eslint) with [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb) and [Workbox](https://github.com/GoogleChrome/workbox). You can find full dependences list in [package.json](https://github.com/appalaszynski/react-redux-boilerplate/blob/master/package.json) file. Project is also ready for [Heroku](https://www.heroku.com/) deploy.
+This is my React boilerplate which I use for building web applications. It was build by me from stratch - I didn't want to use [Create React App](https://github.com/facebook/create-react-app) because I wanted to learn how all this workflow works under the hood.
+
+The boilerplate is based on Webpack. It is responsible for creating HTML document, transpiling ES6+, SASS code and generating SVG sprite.
+Built application works as Progressive Web App thanks to [Workbox](https://developers.google.com/web/tools/workbox/) which creates Serveice Worker and [webpack-pwa-manifest](https://github.com/arthurbergmz/webpack-pwa-manifest) which creates `manifest.json` file and all neccessary icons for Android and iOS.
+
+Webpack config is optimized for fast development rebuilds and minified production build.
+
+Some of additional features are Jest + Enzyme, Autoprefixer, ESLint with Airbnb rules. You can find full dependences list in [package.json](https://github.com/appalaszynski/react-redux-boilerplate/blob/master/package.json) file.
+
+The boilerplate is also ready for [Heroku](https://www.heroku.com/) deploy.
 
 ---
 
@@ -37,8 +46,8 @@ This template is using, among others, [React-Router](https://github.com/ReactTra
 ```bash
 ├── node_modules/                      # 3rd-party libraries and utilities
 ├── jest/                        
-│   ├── cssTransform.js                # Enzyme configuration
-│   ├── FileTransform.js               # Enzyme configuration
+│   ├── cssTransform.js                # Transform stylesheets to empty objects
+│   ├── FileTransform.js               # Transform files to its' name string
 │   ├── setup.js                       # Enzyme configuration
 ├── server/                        
 │   ├── server.js                      # Express server configuration
@@ -48,16 +57,15 @@ This template is using, among others, [React-Router](https://github.com/ReactTra
 │   ├── axios/                         # Axios instances
 │   ├── components/                    # React components
 │   ├── containers/                    # React containers
-│   ├── store/                         # Redux store files
-│   │   ├── actions/                   # Redux actions
-│   │   ├── reducers/                  # Redux reducers
-│   │   ├── configureStore.jsx         # Redux store configuration file
+│   ├── store/                         # Redux configuration files
+│   │   ├── actions/                   # Actions
+│   │   ├── reducers/                  # Reducers
+│   │   ├── configureStore.jsx         # Store configuration file
 │   ├── styles/                        # Sass files using the 7-1 architecture pattern
 │   ├── templates/                     # HTML Webpack Plugin templates
 │   ├── App.jsx                        # Root component
-│   ├── index.jsx                      # Main/Webpack entry file
-│   ├── manifest.json                  # PAW manifest
-│   ├── registerServiceWorker.js       # ServiceWorker registration
+│   ├── index.jsx                      # Webpack entry file
+│   ├── registerServiceWorker.js       # Service Worker registration function
 ├── .babelrc                           # Babel configuration
 └── .browserslistrc                    # Browserslist configuration
 └── .eslintrc.json                     # ESLint configuration
@@ -89,13 +97,17 @@ $ npm install
 
 ## Usage
 
+### webpack.config.js
+
+Webpack configuration file is full of comments so you shouldn't have problems with understanding what each of lines of code does.
+
 ### Running Development Server
 
 ```bash
 $ npm run serve:dev                 
 ```
 
-Then open [http://localhost:3000](http://localhost:8080) to see your app.
+Then open [http://localhost:8080](http://localhost:8080) to see your app.
 
 ### Testing
 
@@ -108,7 +120,7 @@ $ npm test -- --watch                  # Run Jest in watch mode
 
 ```bash
 $ npm run build:dev                    # Build in development mode
-$ npm run build:prod                   # Build in production mode (minified files versions)
+$ npm run build:prod                   # Build in production mode (minified files versions, external stylesheets)
 ```
 
 ### Deploying on Heroku
