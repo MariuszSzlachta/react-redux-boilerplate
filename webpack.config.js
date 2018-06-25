@@ -233,6 +233,8 @@ module.exports = (env, argv) => {
     // Webpack Dev Server configuration.
     devServer: {
       contentBase: path.join(__dirname, 'dist'),
+      // Enable visiting page on other devices.
+      host: '0.0.0.0',
       // index.html page will be served on every URL.
       historyApiFallback: true,
       // Enable gzip compression of generated files.
