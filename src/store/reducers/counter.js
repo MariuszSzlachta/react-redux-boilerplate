@@ -1,5 +1,5 @@
-import * as actionTypes from '../actions/actionTypes';
-import createReducer from './createReducer';
+import { INCREMENT_COUNTER, DECREMENT_COUNTER, RESET_COUNTER } from 'store/actions/actionTypes';
+import createReducer from 'utils/createReducer';
 
 const initialState = {
   lastAction: '',
@@ -25,7 +25,7 @@ const resetCounter = (state, { payload }) => ({
 });
 
 export default createReducer(initialState, {
-  [actionTypes.INCREMENT_COUNTER]: incrementCounter,
-  [actionTypes.DECREMENT_COUNTER]: decrementCounter,
-  [actionTypes.RESET_COUNTER]: resetCounter,
+  [INCREMENT_COUNTER]: incrementCounter,
+  [DECREMENT_COUNTER]: decrementCounter,
+  [RESET_COUNTER]: resetCounter,
 });

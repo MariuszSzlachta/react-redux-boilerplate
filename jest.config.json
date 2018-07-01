@@ -6,7 +6,7 @@
     "node_modules",
     "<rootDir>/src"
   ],
-  "testEnvironment": "node",
+  "testEnvironment": "jsdom",
   "transform": {
     "^.+\\.jsx?$": "babel-jest",
     "^.+\\.css$": "<rootDir>/jest/cssTransform.js",

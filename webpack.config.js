@@ -18,8 +18,8 @@ module.exports = (env, argv) => {
 
   return ({
     // Root files of application (files from which the Webpack will start reading code).
-    // Thanks to `babel-polyfill` You can use new built-ins like `Promise`, `Array.from`,
-    // `Object.assign` or `Array.prototype.includes`.
+    // Thanks to `babel-polyfill` new built-ins like `Promise`, `Array.from`,
+    // `Object.assign` or `Array.prototype.includes` will be polyfilled.
     entry: {
       bundle: ['babel-polyfill', './src/index.jsx'],
       // All vendors (like `React`, `Redux`,) can go to separate bundle file because we update
@@ -51,7 +51,6 @@ module.exports = (env, argv) => {
             // limit specified bytes (10 kilobytes in this case) as data URLs to avoid requests.
             {
               test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-              exclude: /favicon\.png/,
               loader: 'url-loader',
               options: {
                 limit: 10000,
@@ -98,19 +97,19 @@ module.exports = (env, argv) => {
                 // If We are in production mode MiniCssExtractPlugin grabs the result CSS and
                 // puts it into separate file in build process instead of injecting <style> tags.
                 // This won't work without `new MiniCssExtractPlugin()` in `plugins`.
-                isProduction ?
-                  {
+                isProduction
+                  ? {
                     loader: MiniCssExtractPlugin.loader,
                     options: {
                       // MiniCssExtractPlugin expects the build output to be flat (all files
                       // in one directory). However, our output is structured with `assets/*`
-                      // folders. To have this structure working with relative paths, You have to
+                      // folders. To have this structure working with relative paths, we have to
                       // use this custom option. Bu default paths in stylesheet will looks like
                       // `assets/media` so we have to add `../..` to get out from `css` folder.
                       publicPath: '../../',
                     },
-                  } :
-                  'style-loader',
+                  }
+                  : 'style-loader',
                 {
                   loader: 'css-loader',
                   options: {

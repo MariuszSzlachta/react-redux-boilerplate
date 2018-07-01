@@ -1,17 +1,17 @@
-import * as actionTypes from './actionTypes';
+import { INCREMENT_COUNTER, DECREMENT_COUNTER, RESET_COUNTER } from 'store/actions/actionTypes';
 
 const incrementCounter = () => ({
-  type: actionTypes.INCREMENT_COUNTER,
+  type: INCREMENT_COUNTER,
   payload: 'Increment',
 });
 
 const decrementCounter = () => ({
-  type: actionTypes.DECREMENT_COUNTER,
+  type: DECREMENT_COUNTER,
   payload: 'Decrement',
 });
 
 const resetCounter = () => ({
-  type: actionTypes.RESET_COUNTER,
+  type: RESET_COUNTER,
   payload: 'Reset',
 });
 

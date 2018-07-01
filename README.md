@@ -63,6 +63,7 @@ The boilerplate is also ready for [Heroku](https://www.heroku.com/) deploy.
 │   │   ├── configureStore.jsx         # Store configuration file
 │   ├── styles/                        # Sass files using the 7-1 architecture pattern
 │   ├── templates/                     # HTML Webpack Plugin templates
+│   ├── utils/                         # Functions, variables, etc. used across many files
 │   ├── App.jsx                        # Root component
 │   ├── index.jsx                      # Webpack entry file
 │   ├── registerServiceWorker.js       # Service Worker registration function
