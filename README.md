@@ -19,14 +19,14 @@
   <br>
 </div>
 
-This is my React boilerplate which I use for building web applications. It was build by me from stratch - I didn't want to use [Create React App](https://github.com/facebook/create-react-app) because I wanted to learn how all this workflow works under the hood.
+This is my React boilerplate which I use for building web applications. It was built by me from scratch - I didn't want to use [Create React App](https://github.com/facebook/create-react-app) because I wanted to learn how all this workflow works under the hood.
 
 The boilerplate is based on Webpack. It is responsible for creating HTML document, transpiling ES6+, SASS code and generating SVG sprite.
-Built application works as Progressive Web App thanks to [Workbox](https://developers.google.com/web/tools/workbox/) which creates Serveice Worker and [webpack-pwa-manifest](https://github.com/arthurbergmz/webpack-pwa-manifest) which creates `manifest.json` file and all neccessary icons for Android and iOS.
+Built application works as Progressive Web App thanks to [Workbox](https://developers.google.com/web/tools/workbox/) which creates Service Worker and [webpack-pwa-manifest](https://github.com/arthurbergmz/webpack-pwa-manifest) which creates `manifest.json` file and all necessary icons for Android and iOS.
 
 Webpack config is optimized for fast development rebuilds and minified production build.
 
-Some of additional features are Jest + Enzyme, Autoprefixer, ESLint with Airbnb rules. You can find full dependences list in [package.json](https://github.com/appalaszynski/react-redux-boilerplate/blob/master/package.json) file.
+Some of additional features are Jest + Enzyme, Autoprefixer, ESLint with Airbnb rules. You can find full dependencies list in [package.json](https://github.com/appalaszynski/react-redux-boilerplate/blob/master/package.json) file.
 
 The boilerplate is also ready for [Heroku](https://www.heroku.com/) deploy.
 
