@@ -1,21 +1,19 @@
 <div align="center">
   <a href="https://github.com/appalaszynski/react-redux-boilerplate">
-    <img src="https://user-images.githubusercontent.com/35331661/37395944-d3785364-2777-11e8-9c7b-da795e84a6a6.png" width="145px">
+    <img src="https://user-images.githubusercontent.com/35331661/42527408-dd585196-8478-11e8-830a-2f1f20ce3005.png" height="125px">
   </a>
-  <br>
   <h1>React Redux Boilerplate</h1>
   <p>
-    <em>Starter kit for creating apps using React and Redux</em>
+    <em>Starter Kit for Creating Apps Using React and Redux</em>
   </p>
   <p>
     <a href="https://github.com/appalaszynski/react-redux-boilerplate/stargazers">
-      <img src="https://img.shields.io/github/stars/appalaszynski/react-redux-boilerplate.svg" /> 
+      <img src="https://img.shields.io/github/stars/appalaszynski/react-redux-boilerplate.svg" alt="Stars" /> 
     </a>
     <a href="https://github.com/appalaszynski/react-redux-boilerplate/commits/master">
-      <img src="https://img.shields.io/github/last-commit/appalaszynski/react-redux-boilerplate.svg" />
+      <img src="https://img.shields.io/github/last-commit/appalaszynski/react-redux-boilerplate.svg" alt="Last Commit" />
     </a>
   </p>
-  <br>
   <br>
 </div>
 
