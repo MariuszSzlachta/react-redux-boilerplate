@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
@@ -116,14 +117,23 @@ module.exports = (env, argv) => {
                     // This option configures how many loaders before css-loader should be applied
                     // to imported resources (1 => postcss-loader; 2 => postcss-loader,sass-loader).
                     importLoaders: 2,
-                    minimize: isProduction,
                     sourceMap: true,
                   },
                 },
                 // PostCSS configuration is located in postcss.config.js file.
-                'postcss-loader',
+                {
+                  loader: 'postcss-loader',
+                  options: {
+                    sourceMap: true,
+                  },
+                },
                 // This loader uses node-sass to compile SASS code.
-                'sass-loader',
+                {
+                  loader: 'sass-loader',
+                  options: {
+                    sourceMap: true,
+                  },
+                },
               ],
             },
             // When you import an asset, you get its (virtual) filename In production, they
@@ -171,6 +181,14 @@ module.exports = (env, argv) => {
       // This won't work without `MiniCssExtractPlugin.loader` in `loaders`.
       new MiniCssExtractPlugin({
         filename: 'assets/css/styles.[contenthash:8].css',
+      }),
+      // Generate sourcemaps for external CSS files.
+      new OptimizeCssAssetsPlugin({
+        cssProcessorOptions: {
+          map: {
+            inline: false, annotation: true,
+          },
+        },
       }),
       // Generate Service Worker (`service-worker.js` by default).
       new WorkboxWebpackPlugin.GenerateSW({
