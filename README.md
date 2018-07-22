@@ -33,9 +33,9 @@ The boilerplate is also ready for [Heroku](https://www.heroku.com/) deploy.
 ## Table of Contents
 
 * [Directory Structure](#directory-structure)
-* [Prerequisites](#prerequisites)
 * [Installation](#installation)
 * [Usage](#usage)
+* [Contributing](#contributing)
 
 ---
 
@@ -52,7 +52,6 @@ The boilerplate is also ready for [Heroku](https://www.heroku.com/) deploy.
 ├── dist/                              # Compiled output
 ├── src/                               # Source files
 │   ├── assets/                        # Images, icons, sounds etc.
-│   ├── axios/                         # Axios instances
 │   ├── components/                    # React components
 │   ├── containers/                    # React containers
 │   ├── store/                         # Redux configuration files
@@ -76,13 +75,6 @@ The boilerplate is also ready for [Heroku](https://www.heroku.com/) deploy.
 
 ---
 
-## Prerequisites
-
-* [Node.js](https://nodejs.org)
-* [NPM](https://github.com/npm/npm)
-
----
-
 ## Installation
 
 Clone the repo and install dependencies.
@@ -96,7 +88,7 @@ $ npm install
 
 ## Usage
 
-### webpack.config.js
+### Webpack Configuration
 
 Webpack configuration file is full of comments so you shouldn't have problems with understanding what each of lines of code does.
 
@@ -112,14 +104,14 @@ Then open [http://localhost:8080](http://localhost:8080) to see your app.
 
 ```bash
 $ npm test
-$ npm test -- --watch                  # Run Jest in watch mode
+$ npm test -- --watch # Run Jest in watch mode
 ```
 
 ### Deploying Locally
 
 ```bash
-$ npm run build:dev                    # Build in development mode
-$ npm run build:prod                   # Build in production mode (minified files versions, external stylesheets)
+$ npm run build:dev # Build in development mode
+$ npm run build:prod # Build in production mode (minified files versions, external stylesheets)
 ```
 
 ### Deploying on Heroku
@@ -127,11 +119,18 @@ $ npm run build:prod                   # Build in production mode (minified file
 First You should install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 
 ```bash
-$ heroku login                         # Login to Your Heroku account
+$ heroku login # Login to your Heroku account
 $ cd MyApp
-$ git init                             # Initialize a git repository (ignore if already exists)
-$ heroku git:remote -a your-app-name
+$ git init # Initialize a git repository (ignore if already exists)
+$ heroku git:remote -a your-app-name # Add remote Git repository
+$ heroku config:set NPM_CONFIG_PRODUCTION=false # Force Heroku to install devDependencies
 $ git add .
 $ git commit -m "Nice commit message"
 $ git push heroku master
 ```
+
+---
+
+## Contributing
+
+All contributions and suggestions are welcome! For suggested improvements, please create an [issue](https://github.com/appalaszynski/react-redux-boilerplate/issues). For direct contributions, please [fork](https://github.com/appalaszynski/react-redux-boilerplate/fork) the repository, create your feature branch, commit your changes, push commits to the branch and create a new [pull request](https://github.com/appalaszynski/react-redux-boilerplate/pulls).

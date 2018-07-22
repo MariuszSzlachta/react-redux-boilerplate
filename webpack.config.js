@@ -260,6 +260,13 @@ module.exports = (env, argv) => {
       hot: true,
       // Enable HTTPS.
       // https: true,
+      // Proxying URLs can be useful when you have a separate API backend development server
+      // and you want to send API requests on the same domain.
+      // proxy: {
+      //   '/api/*': {
+      //     target: 'http://localhost:5000',
+      //   },
+      // },
       // In console You usually want to see only warnings and errors with its details.
       stats: {
         all: false,
