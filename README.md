@@ -95,7 +95,7 @@ Webpack configuration file is full of comments so you shouldn't have problems wi
 ### Running Development Server
 
 ```bash
-$ npm run serve:dev                 
+$ npm run dev                 
 ```
 
 Then open [http://localhost:8080](http://localhost:8080) to see your app.
@@ -110,8 +110,7 @@ $ npm test -- --watch # Run Jest in watch mode
 ### Deploying Locally
 
 ```bash
-$ npm run build:dev # Build in development mode
-$ npm run build:prod # Build in production mode (minified files versions, external stylesheets)
+$ npm run build
 ```
 
 ### Deploying on Heroku
