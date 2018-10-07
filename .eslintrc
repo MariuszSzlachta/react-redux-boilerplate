@@ -1,10 +1,16 @@
 {
   "env": {
-    "browser": true,
-    "commonjs": true,
     "es6": true,
-    "jest": true,
-    "node": true
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "parser": "babel-eslint",
   "settings": {
@@ -16,16 +22,20 @@
       }
     }
   },
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true,
-      "generators": true,
-      "experimentalObjectRestSpread": true
-    }
-  },
   "rules": {
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "tabWidth": 2,
+        "ignoreUrls": true,
+        "ignoreComments": false,
+        "ignoreRegExpLiterals": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "no-shadow": 0,
     "no-console": 0,
     "no-alert": 0,
     "no-underscore-dangle": 0,
@@ -48,45 +58,10 @@
           "consistent": true
         }
       }
-    ],
-    "jsx-a11y/anchor-is-valid": [
-      2,
-      {
-        "components": [
-          "Link",
-          "NavLink"
-        ],
-        "specialLink": [
-          "hrefLeft",
-          "hrefRight",
-          "to"
-        ],
-        "aspects": [
-          "noHref",
-          "invalidHref",
-          "preferButton"
-        ]
-      }
-    ],
-    "jsx-a11y/label-has-for": [
-      2,
-      {
-        "components": [
-          "Label"
-        ],
-        "required": {
-          "some": [
-            "nesting",
-            "id"
-          ]
-        },
-        "allowChildren": false
-      }
     ]
   },
   "plugins": [
     "react",
-    "jsx-a11y",
     "import"
   ],
   "extends": "airbnb"
